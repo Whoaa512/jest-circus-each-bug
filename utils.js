@@ -1,12 +1,3 @@
-/*
-  Most of this code was stolen directly from
-  https://github.com/rstacruz/mocha-jsdom/blob/master/index.js
-  because it did not integrate well with jest-wrap.
-
-  TODO(joe_lencioni): see if we can improve this now that we aren't confined
-  to jest-wrap's weird API.
-*/
-
 import { JSDOM } from 'jsdom';
 
 const defaults = {
@@ -17,12 +8,6 @@ const defaults = {
 export function wrapWithDOM() {
 
   const globals = Object.getOwnPropertyDescriptors(global);
-  const originalGlobalsReference = {};
-  for (const key in globals) {
-    if (globals[key] !== undefined) {
-      originalGlobalsReference[key] = global[key];
-    }
-  }
   let windowDescriptors;
   let windowDescriptorKeys;
 
